@@ -1,0 +1,23 @@
+<mvc:View
+	controllerName="demo.fontawesome.controller.Main"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	core:require="{
+		formatter: 'demo/fontawesome/model/formatter'
+	}">
+
+	<Page
+		title="{i18n>appTitle}"
+		id="page">
+		<content>
+			<VBox>
+				<Link href="https://ui5-community.github.io/ui5-icon-explorer/" text="UI5 Icon Explorer" target="_blank"/>
+				<core:Icon src="sap-icon://fa-solid/poop" size="5rem" color="#966919"/>
+				<core:Icon src="sap-icon://fa-regular/bookmark" size="5rem" color="yellow"/>
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>
