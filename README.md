@@ -1,6 +1,54 @@
 # UI5 Application demo.fontawesome
 
-Insert the purpose of this project and some interesting info here...
+The purpose of this application is to demo the consumption of the [`ui5-fontawesome-lib`](https://github.com/ui5-community/ui5-fontawesome-lib) in a UI5 application and how to include and distribute the UI5 library with the UI5 application.
+
+To include the `ui5-fontawesome-lib` into your application, just run: 
+
+```sh
+npm install ui5-fontawesome-lib
+```
+
+This installs the dependency to the UI5 library and afterwards you need to add it into the `tsconfig.json` into the `types` list, to ensure that it is considered as dependency and for the TypeScript generation:
+
+```json
+"types": ["@openui5/types", "@types/qunit", "ui5-fontawesome-lib"],
+```
+
+To make sure that the library is included into your project when building the project, you need to maintain the `builder > settings > includeDependency` in the `ui5.yaml`:
+
+```yaml
+builder:
+  settings:
+    includeDependency:
+      - fontawesome.icons.lib
+```
+
+As a last step, when you are running your application with UI5 from CDN, you need to also adopt the `resource-roots` configuration in the `index.html`:
+
+```html
+<script
+  id="sap-ui-bootstrap"
+  src="https://sdk.openui5.org/1.142.0/resources/sap-ui-core.js"
+  data-sap-ui-resource-roots='{
+    "demo.fontawesome": "./",
+    "fontawesome.icons.lib": "./resources/fontawesome/icons/lib/"
+  }'
+  data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
+  data-sap-ui-compat-version="edge"
+  data-sap-ui-frame-options="trusted"
+  data-sap-ui-async="true"
+></script>
+```
+
+With that you can build your UI5 application and it includes the resources from the fontawesome library. To test it locally, just run the following commands:
+
+```sh
+# build the project
+npm run build
+
+# run the project with the build output
+npm run start:dist-cdn
+```
 
 ## Description
 
